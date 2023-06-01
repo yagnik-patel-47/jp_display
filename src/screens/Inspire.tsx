@@ -168,6 +168,7 @@ const Inspire = () => {
                     <Image
                       src={image}
                       alt="A place in japan"
+                      priority
                       className="w-[40rem] object-cover aspect-[1.1/1] rounded-md"
                     />
                   </motion.div>
