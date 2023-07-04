@@ -1,5 +1,6 @@
 "use client"
 import ReactDOM from "react-dom/client"
+import HeroImg from "../assets/hero.webp"
 import Slider4 from "../assets/slider_4.webp"
 import Slider5 from "../assets/slider_5.webp"
 import Reason1 from "../assets/reason_1.webp"
@@ -11,6 +12,9 @@ import Reason5 from "../assets/reason_5.webp"
 export function PreloadResources() {
   const head = ReactDOM.createRoot(document.head)
 
+  head.render(
+    <link rel="preload" href={HeroImg.src} as="image" imageSizes="100vw" />
+  )
   head.render(
     <link rel="preload" href={Reason1.src} as="image" imageSizes="80vw" />
   )
@@ -27,10 +31,10 @@ export function PreloadResources() {
     <link rel="preload" href={Reason5.src} as="image" imageSizes="80vw" />
   )
   head.render(
-    <link rel="preload" href={Slider4.src} as="image" imageSizes="80vw" />
+    <link rel="preload" href={Slider4.src} as="image" imageSizes="30vw" />
   )
   head.render(
-    <link rel="preload" href={Slider5.src} as="image" imageSizes="80vw" />
+    <link rel="preload" href={Slider5.src} as="image" imageSizes="30vw" />
   )
   head.render(
     <link rel="preload" href={"/book-bg.webp"} as="image" imageSizes="80vw" />
