@@ -1,10 +1,12 @@
-import galleryData from "@/lib/galleryData";
-import Image, { StaticImageData } from "next/image";
-import { motion, useScroll, useSpring, useTransform } from "framer-motion";
-import { useEffect, useRef } from "react";
-import { useMediaQuery } from "react-responsive";
+"use client"
 
-const MImage = motion(Image);
+import galleryData from "@/lib/galleryData"
+import Image, { StaticImageData } from "next/image"
+import { motion, useScroll, useSpring, useTransform } from "framer-motion"
+import { useEffect, useRef } from "react"
+import { useMediaQuery } from "react-responsive"
+
+const MImage = motion(Image)
 
 const Places = () => {
   return (
@@ -22,10 +24,10 @@ const Places = () => {
         />
       ))}
     </section>
-  );
-};
+  )
+}
 
-export default Places;
+export default Places
 
 const ImageShow = ({
   title,
@@ -33,47 +35,47 @@ const ImageShow = ({
   images,
   description,
 }: {
-  title: string;
-  jTitle: string;
-  images: StaticImageData[];
-  description: string;
+  title: string
+  jTitle: string
+  images: StaticImageData[]
+  description: string
 }) => {
-  let mobile = useMediaQuery({ query: "(max-width: 762px)" });
-  const ref = useRef(null);
+  let mobile = useMediaQuery({ query: "(max-width: 762px)" })
+  const ref = useRef(null)
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "start start"],
-  });
-  const negetiveRotate = useTransform(scrollYProgress, [0, 1], ["0", "-2deg"]);
-  const posetiveRotate = useTransform(scrollYProgress, [0, 1], ["0", "2deg"]);
+  })
+  const negetiveRotate = useTransform(scrollYProgress, [0, 1], ["0", "-2deg"])
+  const posetiveRotate = useTransform(scrollYProgress, [0, 1], ["0", "2deg"])
   const negetiveX = useTransform(
     scrollYProgress,
     !mobile ? [0, 0.8] : [0.4, 0.9],
     !mobile ? [-100, -600] : [-50, -350]
-  );
+  )
   const posetiveX = useTransform(
     scrollYProgress,
     !mobile ? [0, 0.8] : [0.4, 0.9],
     !mobile ? [100, 600] : [50, 350]
-  );
-  const scale = useTransform(scrollYProgress, [0, 0.8], [0.7, 1]);
-  const opacity = useTransform(scrollYProgress, [0, 0.8], [0, 1]);
+  )
+  const scale = useTransform(scrollYProgress, [0, 0.8], [0.7, 1])
+  const opacity = useTransform(scrollYProgress, [0, 0.8], [0, 1])
   const negSpring = useSpring(negetiveX, {
     stiffness: 100,
     damping: 30,
     restDelta: 0.001,
-  });
+  })
   const posSpring = useSpring(posetiveX, {
     stiffness: 100,
     damping: 30,
     restDelta: 0.001,
-  });
+  })
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
       // console.log(scrollYProgress.get());
-    });
-  }, []);
+    })
+  }, [])
 
   return (
     <div
@@ -121,5 +123,5 @@ const ImageShow = ({
         />
       </motion.div>
     </div>
-  );
-};
+  )
+}

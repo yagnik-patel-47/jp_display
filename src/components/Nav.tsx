@@ -1,40 +1,42 @@
-import { useEffect, useRef, useState } from "react";
-import { AnimatePresence, m, LazyMotion, domAnimation } from "framer-motion";
+"use client"
+
+import { useEffect, useRef, useState } from "react"
+import { AnimatePresence, m, LazyMotion, domAnimation } from "framer-motion"
 import {
   MusicalNoteIcon,
   NoSymbolIcon,
   Bars2Icon,
   XMarkIcon,
-} from "@heroicons/react/24/solid";
+} from "@heroicons/react/24/solid"
 
-const MXMarkIcon = m(XMarkIcon);
-const MBars2Icon = m(Bars2Icon);
+const MXMarkIcon = m(XMarkIcon)
+const MBars2Icon = m(Bars2Icon)
 
 const Nav = () => {
-  const [blurNav, setBlurNav] = useState(false);
-  const [mNavOpen, setMNavOpen] = useState(false);
-  const [musicPlaying, setMusicPlaying] = useState(false);
-  const musicRef = useRef<HTMLAudioElement>(null);
+  const [blurNav, setBlurNav] = useState(false)
+  const [mNavOpen, setMNavOpen] = useState(false)
+  const [musicPlaying, setMusicPlaying] = useState(false)
+  const musicRef = useRef<HTMLAudioElement>(null)
 
   useEffect(() => {
     if (window) {
       window.addEventListener("scroll", () => {
         if (window.scrollY > 100) {
-          setBlurNav(true);
+          setBlurNav(true)
         } else {
-          setBlurNav(false);
+          setBlurNav(false)
         }
-      });
+      })
     }
-  }, []);
+  }, [])
   useEffect(() => {
     if (musicPlaying) {
-      musicRef.current?.load();
-      musicRef.current?.play();
+      musicRef.current?.load()
+      musicRef.current?.play()
     } else {
-      musicRef.current?.pause();
+      musicRef.current?.pause()
     }
-  }, [musicPlaying]);
+  }, [musicPlaying])
   return (
     <LazyMotion features={domAnimation}>
       <audio ref={musicRef} src="/music/in_your_arms.mp3"></audio>
@@ -139,7 +141,7 @@ const Nav = () => {
         </AnimatePresence>
       </m.nav>
     </LazyMotion>
-  );
-};
+  )
+}
 
-export default Nav;
+export default Nav

@@ -1,5 +1,5 @@
-import Image from "next/image";
-import japanMapImage from "../assets/map.webp";
+import Image from "next/image"
+import japanMapImage from "../assets/map.webp"
 
 const BookTrip = () => {
   return (
@@ -23,14 +23,11 @@ const BookTrip = () => {
         Explore the wonderfull of
       </p>
       <p className="lg:text-7xl text-5xl uppercase font-semibold z-0">Japan</p>
-      <button
-        onClick={() => alert("This is a demo website, you DUMMY!")}
-        className="text-black bg-white rounded-full py-5 px-10 lg:text-lg z-0 hover:scale-105 active:scale-95 transition"
-      >
+      <button className="text-black bg-white rounded-full py-5 px-10 lg:text-lg z-0 hover:scale-105 active:scale-95 transition">
         Book Trip
       </button>
     </section>
-  );
-};
+  )
+}
 
-export default BookTrip;
+export default BookTrip

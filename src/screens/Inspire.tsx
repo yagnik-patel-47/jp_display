@@ -1,69 +1,71 @@
+"use client"
+
 import {
   ArrowLongLeftIcon,
   ArrowLongRightIcon,
-} from "@heroicons/react/24/solid";
-import Image from "next/image";
-import Slider1 from "../assets/slider_1.webp";
-import Slider2 from "../assets/slider_2.webp";
-import Slider3 from "../assets/slider_3.webp";
-import Slider4 from "../assets/slider_4.webp";
-import Slider5 from "../assets/slider_5.webp";
-import Reason1 from "../assets/reason_1.webp";
-import Reason2 from "../assets/reason_2.webp";
-import Reason3 from "../assets/reason_3.webp";
-import Reason4 from "../assets/reason_4.webp";
-import Reason5 from "../assets/reason_5.webp";
-import { motion, AnimatePresence } from "framer-motion";
-import { useEffect, useState } from "react";
+} from "@heroicons/react/24/solid"
+import Image from "next/image"
+import Slider1 from "../assets/slider_1.webp"
+import Slider2 from "../assets/slider_2.webp"
+import Slider3 from "../assets/slider_3.webp"
+import Slider4 from "../assets/slider_4.webp"
+import Slider5 from "../assets/slider_5.webp"
+import Reason1 from "../assets/reason_1.webp"
+import Reason2 from "../assets/reason_2.webp"
+import Reason3 from "../assets/reason_3.webp"
+import Reason4 from "../assets/reason_4.webp"
+import Reason5 from "../assets/reason_5.webp"
+import { motion, AnimatePresence } from "framer-motion"
+import { useEffect, useState } from "react"
 
 const Inspire = () => {
   const hiddenMask =
-    "linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 0%)";
+    "linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 0%)"
   const visibleMask =
-    "linear-gradient(to right, rgba(0,0,0,1) 100%, rgba(0,0,0,0) 0%)";
+    "linear-gradient(to right, rgba(0,0,0,1) 100%, rgba(0,0,0,0) 0%)"
   const exitMask =
-    "linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 0%)";
-  const [currentOpen, setCurrentOpen] = useState(1);
-  const reasonImages = [Reason1, Reason2, Reason3, Reason4, Reason5];
-  const [sliderIndex, setSliderIndex] = useState(0);
+    "linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 0%)"
+  const [currentOpen, setCurrentOpen] = useState(1)
+  const reasonImages = [Reason1, Reason2, Reason3, Reason4, Reason5]
+  const [sliderIndex, setSliderIndex] = useState(0)
   const sliderImages = [
     { key: "0", image: Slider1 },
     { key: "1", image: Slider2 },
     { key: "2", image: Slider3 },
     { key: "3", image: Slider4 },
     { key: "4", image: Slider5 },
-  ];
+  ]
   const [currentSliders, setCurrentSliders] = useState([
     { key: "0", image: Slider1 },
     { key: "1", image: Slider2 },
     { key: "2", image: Slider3 },
-  ]);
+  ])
 
   const updateSliderIndex = (mode: "increase" | "decrease") => {
     if (mode === "increase" && sliderIndex < 4) {
-      setSliderIndex(sliderIndex + 1);
+      setSliderIndex(sliderIndex + 1)
     } else if (mode === "increase" && sliderIndex === 4) {
-      setSliderIndex(0);
+      setSliderIndex(0)
     } else if (mode === "decrease" && sliderIndex > 0) {
-      setSliderIndex(sliderIndex - 1);
+      setSliderIndex(sliderIndex - 1)
     } else {
-      setSliderIndex(4);
+      setSliderIndex(4)
     }
-  };
+  }
 
   useEffect(() => {
     if (sliderIndex === 3) {
-      setCurrentSliders([sliderImages[3], sliderImages[4], sliderImages[0]]);
+      setCurrentSliders([sliderImages[3], sliderImages[4], sliderImages[0]])
     } else if (sliderIndex === 4) {
-      setCurrentSliders([sliderImages[4], sliderImages[0], sliderImages[1]]);
+      setCurrentSliders([sliderImages[4], sliderImages[0], sliderImages[1]])
     } else {
       setCurrentSliders([
         sliderImages[sliderIndex],
         sliderImages[sliderIndex + 1],
         sliderImages[sliderIndex + 2],
-      ]);
+      ])
     }
-  }, [sliderIndex]);
+  }, [sliderIndex])
 
   return (
     <section
@@ -341,7 +343,7 @@ const Inspire = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Inspire;
+export default Inspire

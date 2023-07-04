@@ -1,16 +1,18 @@
-import Image from "next/image";
-import About1 from "../assets/about_1.webp";
-import About2 from "../assets/about_2.webp";
-import About3 from "../assets/about_3.webp";
-import About4 from "../assets/about_4.webp";
-import About5 from "../assets/about_5.webp";
-import { m, LazyMotion, domAnimation } from "framer-motion";
-import { useMediaQuery } from "react-responsive";
+"use client"
+
+import Image from "next/image"
+import About1 from "../assets/about_1.webp"
+import About2 from "../assets/about_2.webp"
+import About3 from "../assets/about_3.webp"
+import About4 from "../assets/about_4.webp"
+import About5 from "../assets/about_5.webp"
+import { m, LazyMotion, domAnimation } from "framer-motion"
+import { useMediaQuery } from "react-responsive"
 
 const About = () => {
-  const images = [About1, About2, About3, About4, About5];
-  const letters = ["J", "A", "P", "A", "N"];
-  let mobile = useMediaQuery({ query: "(max-width: 762px)" });
+  const images = [About1, About2, About3, About4, About5]
+  const letters = ["J", "A", "P", "A", "N"]
+  let mobile = useMediaQuery({ query: "(max-width: 762px)" })
   return (
     <section
       id="about"
@@ -79,7 +81,7 @@ const About = () => {
         </q>
       </p>
     </section>
-  );
-};
+  )
+}
 
-export default About;
+export default About

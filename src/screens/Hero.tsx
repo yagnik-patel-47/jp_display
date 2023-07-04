@@ -1,18 +1,14 @@
-import Image from "next/image";
-import HeroImg from "../assets/hero.webp";
+"use client"
+
+import Image from "next/image"
+import HeroImg from "../assets/hero.webp"
 import {
   ArrowLongRightIcon,
   ArrowPathRoundedSquareIcon,
-} from "@heroicons/react/24/solid";
-import { UserIcon } from "@heroicons/react/24/outline";
-import { useEffect } from "react";
-import {
-  m,
-  LazyMotion,
-  stagger,
-  useAnimate,
-  domAnimation,
-} from "framer-motion";
+} from "@heroicons/react/24/solid"
+import { UserIcon } from "@heroicons/react/24/outline"
+import { useEffect } from "react"
+import { m, LazyMotion, stagger, useAnimate, domAnimation } from "framer-motion"
 
 const Hero = () => {
   const colors = [
@@ -20,13 +16,13 @@ const Hero = () => {
     "#213371", // navy
     "#e7065e", // hot pink
     "#ffd767", // yellow
-  ];
-  const h1text = "Experience the";
-  const h2text = "Magic of Japan";
+  ]
+  const h1text = "Experience the"
+  const h2text = "Magic of Japan"
 
-  const [scope, animteLinks] = useAnimate();
-  const [h1scope, animteH1] = useAnimate();
-  const [h2scope, animteH2] = useAnimate();
+  const [scope, animteLinks] = useAnimate()
+  const [h1scope, animteH1] = useAnimate()
+  const [h2scope, animteH2] = useAnimate()
 
   useEffect(() => {
     animteH1(
@@ -37,7 +33,7 @@ const Hero = () => {
         opacity: [0, 1, 1, 1, 1, 1, 1],
       },
       { delay: stagger(0.1) }
-    );
+    )
     setTimeout(
       () =>
         animteH2(
@@ -50,9 +46,9 @@ const Hero = () => {
           { delay: stagger(0.1) }
         ),
       1000
-    );
-    animteLinks("a", { opacity: 1 }, { duration: 0.4, delay: stagger(0.2) });
-  }, []);
+    )
+    animteLinks("a", { opacity: 1 }, { duration: 0.4, delay: stagger(0.2) })
+  }, [])
   return (
     <main className="flex min-h-screen text-white flex-col px-8 md:px-24 lg:px-32 xl:px-40 relative pb-16">
       <Image
@@ -121,11 +117,11 @@ const Hero = () => {
               className="w-fit group items-center space-x-3 flex py-3 px-8 lg:py-4 lg:px-12 rounded-full bg-white text-neutral-900 lg:text-lg"
               onClick={() => {
                 try {
-                  document.documentElement.requestFullscreen();
+                  document.documentElement.requestFullscreen()
                 } catch {
                   alert(
                     "Sorry can't fullscreen right now! please do it mannualy"
-                  );
+                  )
                 }
               }}
             >
@@ -253,7 +249,7 @@ const Hero = () => {
         </div>
       </div>
     </main>
-  );
-};
+  )
+}
 
-export default Hero;
+export default Hero
