@@ -1,0 +1,382 @@
+---
+import { Image } from "astro:assets"
+import Slider1 from "../assets/slider_1.webp"
+import Slider2 from "../assets/slider_2.webp"
+import Slider3 from "../assets/slider_3.webp"
+import Slider4 from "../assets/slider_4.webp"
+import Slider5 from "../assets/slider_5.webp"
+import Reason1 from "../assets/reason_1.webp"
+import Reason2 from "../assets/reason_2.webp"
+import Reason3 from "../assets/reason_3.webp"
+import Reason4 from "../assets/reason_4.webp"
+import Reason5 from "../assets/reason_5.webp"
+const currentSliders = [
+  { image: Slider1 },
+  { image: Slider2 },
+  { image: Slider3 },
+]
+const reasonImages = [Reason1, Reason2, Reason3, Reason4, Reason5]
+---
+
+<section
+  id="inspire"
+  class="flex flex-col items-center py-24 px-8 md:px-24 xl:px-32 space-y-24"
+>
+  <div
+    class="flex justify-around w-full flex-col lg:flex-row space-y-8 lg:space-y-0"
+  >
+    <div class="flex flex-col justify-center">
+      <div class="flex flex-col space-y-8">
+        <span class="font-japanese font-medium text-2xl">鼓舞する</span>
+        <h2 class="font-decorative font-bold text-4xl md:text-5xl">
+          Get Inspired
+        </h2>
+        <div class="text-neutral-800">
+          <p>Easing the impact of tourism on our planet,</p>
+          <p>through sustainable and regenerative tourism.</p>
+        </div>
+      </div>
+      <div class="space-x-3 flex mt-12 lg:mt-32">
+        <button id="prev-btn" class="p-4 bg-lime-300 rounded-full">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-7 h-7"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18"></path>
+          </svg>
+        </button>
+        <button id="next-btn" class="p-4 bg-lime-300 rounded-full">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-7 h-7"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div
+      class="flex space-x-2 md:space-x-4 xl:space-x-8 items-end relative overflow-hidden"
+    >
+      <div
+        class="overflow-hidden transform -translate-x-full slider-box absolute next-animate-box"
+        data-flip-id="4"
+      >
+        <Image
+          src={Slider5}
+          alt=""
+          class="xl:w-72 w-48 aspect-[7.5/16] object-cover h-auto origin-left slider-images"
+        />
+      </div>
+      {
+        currentSliders.map((image, index) => (
+          <div
+            class="overflow-hidden slider-box next-animate-box prev-animate-box"
+            data-flip-id={index}
+          >
+            <Image
+              src={image.image}
+              alt=""
+              class={`${index === 2 ? "xl:w-44 w-28" : "xl:w-72 w-48"} ${
+                index === 0
+                  ? "aspect-[7.5/16]"
+                  : index === 1
+                  ? "aspect-[9/16]"
+                  : "aspect-[7/16]"
+              } object-cover h-auto origin-left slider-images`}
+            />
+          </div>
+        ))
+      }
+      <div
+        class="overflow-hidden right-[0%] transform translate-x-full slider-box absolute prev-animate-box"
+        data-flip-id="3"
+      >
+        <Image
+          src={Slider4}
+          alt=""
+          class="xl:w-44 w-16 aspect-[7/16] object-cover h-auto origin-left slider-images"
+        />
+      </div>
+    </div>
+  </div>
+  <h1 class="lg:text-7xl text-3xl text-center text-[#141416] font-bold">
+    Reason To Visit Japan
+  </h1>
+  <h2 class="lg:text-3xl text-2xl !mt-5 font-medium font-japanese">
+    日本を訪問
+  </h2>
+  <div class="flex justify-around relative w-full flex-col lg:flex-row">
+    <div>
+      {
+        reasonImages.map((image, index) => (
+          <div
+            class={`${
+              index === 0 ? "" : "hidden"
+            } overflow-hidden reason-image`}
+          >
+            <Image
+              src={image}
+              alt="A place in japan"
+              class="w-[40rem] object-cover aspect-[1.1/1] rounded-md"
+            />
+          </div>
+        ))
+      }
+    </div>
+    <div class="flex space-x-8">
+      <div class="h-full inline-block w-1 bg-neutral-300"></div>
+      <div class="flex flex-col space-y-10 py-8">
+        <div class="flex flex-col space-y-2 items-start">
+          <button class={`font-medium relative text-2xl collapsible-trigger`}>
+            <div
+              data-flip-id="bar"
+              class="absolute -left-9 h-full w-1 bg-black left-bar"
+            >
+            </div>
+             Festivals</button
+          >
+          <p class="max-w-md lg:text-lg overflow-hidden collapsible-content">
+            Japan is renowned for its enchanting festivals, where ancient
+            traditions come alive in a whirlwind of colors, music, and
+            captivating rituals. Matsuri, or traditional festivals, are an
+            integral part of Japanese culture, offering a glimpse into the
+            nation's history, spirituality, and communal spirit.
+          </p>
+        </div>
+        <div class="flex flex-col space-y-2 items-start">
+          <button class={`font-medium relative text-2xl collapsible-trigger`}>
+            <div class="absolute -left-9 h-full w-1 bg-black hidden left-bar">
+            </div>
+             Art and Artists
+          </button>
+          <p class="max-w-md lg:text-lg overflow-hidden collapsible-content">
+            Japan's manga and anime industry has left an indelible mark on
+            popular culture worldwide. Artists like Hayao Miyazaki, the
+            visionary behind Studio Ghibli, have shaped the landscape of
+            storytelling, captivating audiences with their imaginative
+            narratives and profound themes.
+          </p>
+        </div>
+        <div class="flex flex-col space-y-2 items-start">
+          <button class={`font-medium relative text-2xl collapsible-trigger`}>
+            <div class="absolute -left-9 h-full w-1 bg-black hidden left-bar">
+            </div>
+             The Culture</button
+          >
+          <p class="max-w-md lg:text-lg overflow-hidden collapsible-content">
+            Japanese culture is a rich tapestry that seamlessly weaves together
+            tradition, aesthetics, and artistic expression. With a history
+            spanning centuries, Japan has nurtured an array of artistic
+            disciplines that continue to captivate the world. One of the most
+            prominent art forms is Ikebana, the elegant practice of flower
+            arrangement.
+          </p>
+        </div>
+        <div class="flex flex-col space-y-2 items-start">
+          <button class={`font-medium relative text-2xl collapsible-trigger`}>
+            <div class="absolute -left-9 h-full w-1 bg-black hidden left-bar">
+            </div>
+             Peace and Quiet
+          </button>
+          <p class="max-w-md lg:text-lg overflow-hidden collapsible-content">
+            Japan's landscapes are a harmonious blend of breathtaking natural
+            beauty and serene tranquility, offering a respite from the bustling
+            urban centers. From the majestic peaks of the Japanese Alps to the
+            peaceful shores of remote islands, the country boasts a diverse
+            range of awe-inspiring vistas.
+          </p>
+        </div>
+        <div class="flex flex-col space-y-2 items-start">
+          <button class={`font-medium relative text-2xl collapsible-trigger`}>
+            <div class="absolute -left-9 h-full w-1 bg-black hidden left-bar">
+            </div>
+             Ease of Travel</button
+          >
+          <p class="max-w-md lg:text-lg overflow-hidden collapsible-content">
+            Traveling in Japan is a remarkably easy and efficient experience,
+            thanks to the country's well-developed infrastructure and
+            exceptional transportation systems. From the moment you arrive at
+            one of Japan's modern and well-connected airports, you'll find a
+            multitude of options to explore the country with ease.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import gsap from "gsap"
+  import Flip from "gsap/Flip"
+  import CustomEase from "gsap/CustomEase"
+  import Slider1 from "../assets/slider_1.webp"
+  import Slider2 from "../assets/slider_2.webp"
+  import Slider3 from "../assets/slider_3.webp"
+  import Slider4 from "../assets/slider_4.webp"
+  import Slider5 from "../assets/slider_5.webp"
+  const hiddenMask =
+    "linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 0%)"
+  const visibleMask =
+    "linear-gradient(to right, rgba(0,0,0,1) 100%, rgba(0,0,0,0) 0%)"
+  const exitMask =
+    "linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 0%)"
+  const sliderImages = [
+    Slider1.src,
+    Slider2.src,
+    Slider3.src,
+    Slider4.src,
+    Slider5.src,
+  ]
+  let sliderIndex = [4, 0, 1, 2, 3]
+  let reasonIndex = 0
+  const prevBtn = document.getElementById("prev-btn")
+  const nextBtn = document.getElementById("next-btn")
+  const sliderImagesElement =
+    document.querySelectorAll<HTMLImageElement>(".slider-images")
+  const sliderBox = document.querySelectorAll<HTMLDivElement>(".slider-box")
+  const reasonImagesElement =
+    document.querySelectorAll<HTMLDivElement>(".reason-image")
+  const collapsibleParas = document.querySelectorAll<HTMLParagraphElement>(
+    ".collapsible-content",
+  )
+  const collapsibleBtns = document.querySelectorAll(".collapsible-trigger")
+  const collapsibleIndicators =
+    document.querySelectorAll<HTMLSpanElement>(".left-bar")
+  nextBtn?.addEventListener("click", () => {
+    sliderIndex = decrementIndex(sliderIndex)
+    updateImages("prev")
+  })
+  prevBtn?.addEventListener("click", () => {
+    sliderIndex = incrementIndex(sliderIndex)
+    updateImages("next")
+  })
+
+  function updateImages(func: "next" | "prev") {
+    const state = Flip.getState(".slider-box")
+    sliderImagesElement.forEach((image, index) => {
+      image.src = sliderImages[sliderIndex[index]]
+    })
+    sliderBox.forEach((box, index) => {
+      box.dataset.flipId = sliderIndex[index].toString()
+    })
+    Flip.from(state, {
+      targets: func === "next" ? ".next-animate-box" : ".prev-animate-box",
+      duration: 0.5,
+      scale: true,
+    })
+  }
+
+  let isAnimating = false
+  collapsibleBtns.forEach((btn, index) => {
+    btn.addEventListener("click", () => {
+      const prevIndex = reasonIndex
+      reasonIndex = index
+      if (prevIndex === reasonIndex || isAnimating) return
+      isAnimating = true
+      const state = Flip.getState(".left-bar")
+      collapsibleIndicators[prevIndex].classList.add("hidden")
+      collapsibleIndicators[reasonIndex].classList.remove("hidden")
+      collapsibleIndicators[prevIndex].removeAttribute("data-flip-id")
+      collapsibleIndicators[reasonIndex].dataset.flipId = "bar"
+      reasonImagesElement[prevIndex].classList.add("absolute", "top-0")
+      reasonImagesElement[reasonIndex].classList.remove("absolute", "top-0")
+      reasonImagesElement[reasonIndex].classList.remove("hidden")
+      Flip.from(state, {
+        absolute: true,
+      })
+      const contentHeight = collapsibleParas[reasonIndex].scrollHeight
+      gsap.to(collapsibleParas[reasonIndex], {
+        height: contentHeight,
+        duration: 0.3,
+      })
+      gsap.to(collapsibleParas[prevIndex], {
+        height: 0,
+        duration: 0.3,
+      })
+      gsap.fromTo(
+        reasonImagesElement[reasonIndex],
+        { maskImage: hiddenMask },
+        {
+          maskImage: visibleMask,
+          duration: 1,
+          ease: CustomEase.create("custom", "0.76,0,0.24,1"),
+        },
+      )
+      gsap
+        .to(reasonImagesElement[prevIndex], {
+          maskImage: exitMask,
+          duration: 1,
+          ease: CustomEase.create("custom", "0.76,0,0.24,1"),
+        })
+        .then(() => {
+          reasonImagesElement[prevIndex].classList.add("hidden")
+          isAnimating = false
+        })
+    })
+  })
+
+  sliderImagesElement.forEach((image, index) => {
+    gsap.fromTo(
+      image,
+      { maskImage: hiddenMask },
+      {
+        scrollTrigger: image,
+        maskImage: visibleMask,
+        duration: 1,
+        delay: index * 0.25,
+        ease: CustomEase.create("custom", "0.76,0,0.24,1"),
+      },
+    )
+  })
+
+  reasonImagesElement.forEach((image) => {
+    gsap.fromTo(
+      image,
+      { maskImage: hiddenMask },
+      {
+        scrollTrigger: image,
+        maskImage: visibleMask,
+        duration: 1,
+        ease: CustomEase.create("custom", "0.76,0,0.24,1"),
+      },
+    )
+  })
+
+  collapsibleParas.forEach((para, index) => {
+    index !== 0 ? (para.style.height = "0px") : null
+  })
+
+  function incrementIndex(arr: number[]) {
+    const updated = []
+    for (let i = 0; i < arr.length; i++) {
+      let curr = arr[i]
+      curr === 4 ? (curr = 0) : (curr += 1)
+      updated.push(curr)
+    }
+    return updated
+  }
+  function decrementIndex(arr: number[]) {
+    const updated = []
+    for (let i = 0; i < arr.length; i++) {
+      let curr = arr[i]
+      curr === 0 ? (curr = 4) : (curr -= 1)
+      updated.push(curr)
+    }
+    return updated
+  }
+</script>

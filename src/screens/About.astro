@@ -1,0 +1,99 @@
+---
+import About1 from "../assets/about_1.webp"
+import About2 from "../assets/about_2.webp"
+import About3 from "../assets/about_3.webp"
+import About4 from "../assets/about_4.webp"
+import About5 from "../assets/about_5.webp"
+import { Image } from "astro:assets"
+const images = [About1, About2, About3, About4, About5]
+const letters = ["J", "A", "P", "A", "N"]
+---
+
+<section
+  id="about"
+  class="flex flex-col items-center py-16 mt-16 px-8 md:px-24 lg:px-32 space-y-12 lg:space-y-24"
+>
+  <h1 class="lg:text-7xl text-4xl text-[#141416] font-bold">About</h1>
+  <h2 class="lg:text-3xl text-2xl !mt-5 font-medium font-japanese">日本</h2>
+  <div class="flex space-x-1 lg:space-x-4">
+    {
+      images.map((image, index) => (
+        <div class="relative about-images">
+          <Image src={image} alt="place" class="w-60 h-auto aspect-[9/16]" />
+          <div class="absolute inset-0 bg-gradient-to-b bg-black/20 image-overlays" />
+          <span class="absolute text-4xl sm:text-6xl md:text-7xl lg:text-9xl text-white/80 font-bold top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 about-letters">
+            {letters[index]}
+          </span>
+        </div>
+      ))
+    }
+  </div>
+  <p
+    class="lg:!mt-48 !mt-32 lg:max-w-7xl font-medium text-neutral-900 lg:text-lg text-sm text-center"
+  >
+    <q>
+      Japan, an enchanting archipelago in East Asia, is a captivating blend of
+      ancient traditions and cutting-edge innovation. Known as the Land of the
+      Rising Sun, Japan is a nation that seamlessly blends its rich history with
+      a forward-thinking mindset. With a population renowned for their
+      diligence, discipline, and respect, Japanese society reflects a harmonious
+      balance between tradition and modernity.
+    </q>
+  </p>
+</section>
+
+<script>
+  import gsap from "gsap"
+  import CustomEase from "gsap/CustomEase"
+  const isMobile = window.matchMedia("(max-width: 762px)").matches
+  const images = document.querySelectorAll<HTMLDivElement>(".about-images")
+  const letters = document.querySelectorAll<HTMLSpanElement>(".about-letters")
+  const overlays = document.querySelectorAll<HTMLDivElement>(".image-overlays")
+  images.forEach((image, index) => {
+    gsap.to(image, {
+      scrollTrigger: image,
+      y: !isMobile
+        ? index === 3 || index === 1
+          ? 48
+          : index === 2
+          ? 96
+          : 0
+        : index === 3 || index === 1
+        ? 32
+        : index === 2
+        ? 64
+        : 0,
+      duration: 1,
+      delay: index === 3 || index === 1 ? 0.5 : index === 2 ? 0.25 : 0,
+      ease: CustomEase.create("custom", "0.76,0,0.24,1"),
+    })
+  })
+  letters.forEach((letter, index) => {
+    gsap.fromTo(
+      letter,
+      {
+        opacity: 0,
+      },
+      {
+        scrollTrigger: letter,
+        opacity: 1,
+        duration: 0.5,
+        delay: 0.75 + index * 0.25,
+      },
+    )
+  })
+  overlays.forEach((overlay, index) => {
+    gsap.fromTo(
+      overlay,
+      {
+        opacity: 0,
+      },
+      {
+        scrollTrigger: overlay,
+        opacity: 1,
+        duration: 0.5,
+        delay: 0.5,
+      },
+    )
+  })
+</script>

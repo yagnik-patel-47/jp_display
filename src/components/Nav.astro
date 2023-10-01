@@ -1,0 +1,220 @@
+<audio id="music" src="/music/in_your_arms.mp3"></audio>
+<nav
+  class="text-white py-10 px-8 md:px-24 lg:px-40 flex flex-col w-full fixed top-0 transition-all duration-300 z-20 solid_nav"
+>
+  <div class="flex items-center w-full justify-between">
+    <button
+      data-target="#"
+      class="font-decorative font-bold text-2xl lg:text-4xl nav-links"
+    >
+      JAPAN
+    </button>
+    <div
+      class="hidden lg:flex text-neutral-100 space-x-16 font-medium items-center text-lg"
+    >
+      <button class="nav-links uppercase" data-target="#about">About</button>
+      <button class="nav-links uppercase" data-target="#inspire"
+        >Inspiration</button
+      >
+      <button class="nav-links uppercase" data-target="#places">Places</button>
+      <button class="nav-links uppercase" data-target="#booktrip"
+        >Book a trip</button
+      >
+    </div>
+    <button
+      class="border-2 hidden font-medium text-lg border-white rounded-full px-6 py-2 hover:bg-white hover:text-neutral-900 transition lg:flex space-x-2 items-center music-btn"
+    >
+      <span>Music</span>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="w-6 h-6"
+        id="block-icon"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"
+        ></path>
+      </svg>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        class="w-6 h-6 hidden"
+        id="note-icon"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M19.952 1.651a.75.75 0 01.298.599V16.303a3 3 0 01-2.176 2.884l-1.32.377a2.553 2.553 0 11-1.403-4.909l2.311-.66a1.5 1.5 0 001.088-1.442V6.994l-9 2.572v9.737a3 3 0 01-2.176 2.884l-1.32.377a2.553 2.553 0 11-1.402-4.909l2.31-.66a1.5 1.5 0 001.088-1.442V9.017 5.25a.75.75 0 01.544-.721l10.5-3a.75.75 0 01.658.122z"
+          clip-rule="evenodd"></path>
+      </svg>
+    </button>
+    <button
+      id="nav-toggle"
+      class="p-2 cursor-pointer lg:hidden"
+      aria-label="toggle nav"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="w-7 h-7"
+        id="open-icon"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M3.75 9h16.5m-16.5 6.75h16.5"></path>
+      </svg>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="w-7 h-7 hidden"
+        id="close-icon"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+    </button>
+  </div>
+  <div
+    id="nav-collapsible-content"
+    class="flex lg:hidden flex-col overflow-hidden h-0"
+  >
+    <div
+      class="flex flex-col py-8 text-neutral-200 space-y-4 font-medium items-start"
+    >
+      <button class="nav-links uppercase" data-target="#about">About</button>
+      <button class="nav-links uppercase" data-target="#inspire"
+        >Inspiration</button
+      >
+      <button class="nav-links uppercase" data-target="#places">Places</button>
+      <button class="nav-links uppercase" data-target="#booktrip"
+        >Book a trip</button
+      >
+    </div>
+    <button
+      class="border-2 font-medium border-white rounded-full px-6 py-2 hover:bg-white hover:text-neutral-900 w-fit transition flex space-x-2 items-center music-btn"
+    >
+      <span>Music</span>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="w-6 h-6"
+        id="block-icon"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"
+        ></path>
+      </svg>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        class="w-6 h-6 hidden"
+        id="note-icon"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M19.952 1.651a.75.75 0 01.298.599V16.303a3 3 0 01-2.176 2.884l-1.32.377a2.553 2.553 0 11-1.403-4.909l2.311-.66a1.5 1.5 0 001.088-1.442V6.994l-9 2.572v9.737a3 3 0 01-2.176 2.884l-1.32.377a2.553 2.553 0 11-1.402-4.909l2.31-.66a1.5 1.5 0 001.088-1.442V9.017 5.25a.75.75 0 01.544-.721l10.5-3a.75.75 0 01.658.122z"
+          clip-rule="evenodd"></path>
+      </svg>
+    </button>
+  </div>
+</nav>
+
+<script>
+  import gsap from "gsap"
+  import ScrollTrigger from "gsap/ScrollTrigger"
+  import Lenis from "@studio-freight/lenis"
+  const lenis = new Lenis()
+  lenis.on("scroll", ScrollTrigger.update)
+  gsap.ticker.add((time) => {
+    lenis.raf(time * 1000)
+  })
+  gsap.ticker.lagSmoothing(0)
+  const links = document.querySelectorAll<HTMLAnchorElement>(".nav-links")
+  links.forEach((link) => {
+    link.addEventListener("click", () => {
+      if (link.dataset.target === "#") {
+        lenis.scrollTo("top", { lerp: 0.05 })
+      } else {
+        toogleNav()
+        lenis.scrollTo(link.dataset.target)
+      }
+    })
+  })
+  const navElement = document.querySelector("nav")
+  const audioElement = document.getElementById("music") as HTMLAudioElement
+  const musicBtns = document.querySelectorAll(".music-btn")
+  const noteSvg = document.getElementById("note-icon")
+  const blockSvg = document.getElementById("block-icon")
+  const navToggleBtn = document.getElementById("nav-toggle")
+  const navOpenSvg = document.getElementById("open-icon")
+  const navCloseSvg = document.getElementById("close-icon")
+  const navContent = document.getElementById("nav-collapsible-content")!
+  let navOpen = false
+  navToggleBtn?.addEventListener("click", toogleNav)
+  window.scrollY > 100
+    ? navElement?.classList.add("translucent_nav")
+    : navElement?.classList.remove("solid_nav")
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 100) {
+      navElement?.classList.add("translucent_nav")
+    } else {
+      navElement?.classList.remove("translucent_nav")
+    }
+  })
+  musicBtns.forEach((musicBtn) => {
+    musicBtn?.addEventListener("click", () => {
+      if (audioElement.paused) {
+        try {
+          audioElement.play()
+          noteSvg?.classList.toggle("hidden")
+          blockSvg?.classList.toggle("hidden")
+        } catch {
+          alert("Can't play music right now! Sorry.")
+        }
+      } else {
+        audioElement.pause()
+        noteSvg?.classList.toggle("hidden")
+        blockSvg?.classList.toggle("hidden")
+      }
+    })
+  })
+
+  function toogleNav() {
+    const height = navContent?.scrollHeight
+    navOpen = !navOpen
+    navOpenSvg?.classList.toggle("hidden")
+    navCloseSvg?.classList.toggle("hidden")
+    if (navOpen) {
+      gsap.to(navContent, { height, duration: 0.2 })
+      if (!navElement?.classList.contains("translucent_nav"))
+        navElement?.classList.add("translucent_nav")
+    } else {
+      gsap.to(navContent, { height: 0, duration: 0.2 })
+      if (
+        window.scrollY <= 100 &&
+        navElement?.classList.contains("translucent_nav")
+      )
+        navElement?.classList.remove("translucent_nav")
+    }
+  }
+</script>

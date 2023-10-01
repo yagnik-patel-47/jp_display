@@ -7,7 +7,7 @@ import takao2 from "../assets/takao_2.webp";
 import osaka1 from "../assets/osaka_1.webp";
 import osaka2 from "../assets/osaka_2.webp";
 
-const galleryData = [
+const placeData = [
   {
     title: "Tokyo",
     jTitle: "東京",
@@ -38,4 +38,4 @@ const galleryData = [
   },
 ];
 
-export default galleryData;
+export default placeData;

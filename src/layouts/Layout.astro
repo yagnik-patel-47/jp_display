@@ -1,0 +1,86 @@
+---
+interface Props {
+  title: string
+}
+
+const { title } = Astro.props
+import "@fontsource-variable/rubik"
+import "@fontsource-variable/cinzel"
+import "@fontsource/noto-serif-jp/500.css"
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body class="font-rubik">
+    <slot />
+  </body>
+</html>
+<style is:global>
+  :root {
+    --foreground-rgb: 0, 0, 0;
+    --background-start-rgb: 214, 219, 220;
+    --background-end-rgb: 255, 255, 255;
+  }
+  html.lenis {
+    height: auto;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto;
+  }
+
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+
+  .lenis.lenis-scrolling iframe {
+    pointer-events: none;
+  }
+  html {
+    color-scheme: dark;
+    scroll-behavior: smooth;
+  }
+  body {
+    color: rgb(var(--foreground-rgb));
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        rgb(var(--background-end-rgb))
+      )
+      rgb(var(--background-start-rgb));
+  }
+  .translucent_nav {
+    backdrop-filter: blur(10px) saturate(200%) !important;
+    -webkit-backdrop-filter: blur(10px) saturate(200%) !important;
+    background-color: rgba(24, 26, 27, 0.8) !important;
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+  }
+  .solid_nav {
+    backdrop-filter: blur(0) saturate(100%);
+    -webkit-backdrop-filter: blur(0) saturate(100%);
+    background-color: rgba(24, 26, 27, 0);
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+</style>
+
+<script>
+  import gsap from "gsap"
+  import Flip from "gsap/Flip"
+  import ScrollTrigger from "gsap/ScrollTrigger"
+  import CustomEase from "gsap/CustomEase"
+  gsap.registerPlugin(ScrollTrigger, Flip, CustomEase)
+</script>
