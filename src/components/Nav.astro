@@ -5,19 +5,23 @@
   <div class="flex items-center w-full justify-between">
     <button
       data-target="#"
-      class="font-decorative font-bold text-2xl lg:text-4xl nav-links"
+      class="font-decorative font-bold text-2xl lg:text-4xl nav-links cursor-pointer"
     >
       JAPAN
     </button>
     <div
       class="hidden lg:flex text-neutral-100 space-x-16 font-medium items-center text-lg"
     >
-      <button class="nav-links uppercase" data-target="#about">About</button>
-      <button class="nav-links uppercase" data-target="#inspire"
+      <button class="nav-links uppercase cursor-pointer" data-target="#about"
+        >About</button
+      >
+      <button class="nav-links uppercase cursor-pointer" data-target="#inspire"
         >Inspiration</button
       >
-      <button class="nav-links uppercase" data-target="#places">Places</button>
-      <button class="nav-links uppercase" data-target="#booktrip"
+      <button class="nav-links uppercase cursor-pointer" data-target="#places"
+        >Places</button
+      >
+      <button class="nav-links uppercase cursor-pointer" data-target="#booktrip"
         >Book a trip</button
       >
     </div>
@@ -140,61 +144,64 @@
 </nav>
 
 <script>
-  import gsap from "gsap"
-  import ScrollTrigger from "gsap/ScrollTrigger"
-  import Lenis from "@studio-freight/lenis"
+  import { gsap } from 'gsap'
+  import Flip from 'gsap/Flip'
+  import ScrollTrigger from 'gsap/ScrollTrigger'
+  import CustomEase from 'gsap/CustomEase'
+  gsap.registerPlugin(Flip, ScrollTrigger, CustomEase)
+  import Lenis from 'lenis'
   const lenis = new Lenis()
-  lenis.on("scroll", ScrollTrigger.update)
+  lenis.on('scroll', ScrollTrigger.update)
   gsap.ticker.add((time) => {
     lenis.raf(time * 1000)
   })
   gsap.ticker.lagSmoothing(0)
-  const links = document.querySelectorAll<HTMLAnchorElement>(".nav-links")
+  const links = document.querySelectorAll<HTMLAnchorElement>('.nav-links')
   links.forEach((link) => {
-    link.addEventListener("click", () => {
-      if (link.dataset.target === "#") {
-        lenis.scrollTo("top", { lerp: 0.05 })
+    link.addEventListener('click', () => {
+      if (link.dataset.target === '#') {
+        lenis.scrollTo('top', { lerp: 0.05 })
       } else {
         toogleNav()
-        lenis.scrollTo(link.dataset.target)
+        lenis.scrollTo(link.dataset.target!)
       }
     })
   })
-  const navElement = document.querySelector("nav")
-  const audioElement = document.getElementById("music") as HTMLAudioElement
-  const musicBtns = document.querySelectorAll(".music-btn")
-  const noteSvg = document.getElementById("note-icon")
-  const blockSvg = document.getElementById("block-icon")
-  const navToggleBtn = document.getElementById("nav-toggle")
-  const navOpenSvg = document.getElementById("open-icon")
-  const navCloseSvg = document.getElementById("close-icon")
-  const navContent = document.getElementById("nav-collapsible-content")!
+  const navElement = document.querySelector('nav')
+  const audioElement = document.getElementById('music') as HTMLAudioElement
+  const musicBtns = document.querySelectorAll('.music-btn')
+  const noteSvg = document.getElementById('note-icon')
+  const blockSvg = document.getElementById('block-icon')
+  const navToggleBtn = document.getElementById('nav-toggle')
+  const navOpenSvg = document.getElementById('open-icon')
+  const navCloseSvg = document.getElementById('close-icon')
+  const navContent = document.getElementById('nav-collapsible-content')!
   let navOpen = false
-  navToggleBtn?.addEventListener("click", toogleNav)
+  navToggleBtn?.addEventListener('click', toogleNav)
   window.scrollY > 100
-    ? navElement?.classList.add("translucent_nav")
-    : navElement?.classList.remove("solid_nav")
-  window.addEventListener("scroll", () => {
+    ? navElement?.classList.add('translucent_nav')
+    : navElement?.classList.remove('solid_nav')
+  window.addEventListener('scroll', () => {
     if (window.scrollY > 100) {
-      navElement?.classList.add("translucent_nav")
+      navElement?.classList.add('translucent_nav')
     } else {
-      navElement?.classList.remove("translucent_nav")
+      navElement?.classList.remove('translucent_nav')
     }
   })
   musicBtns.forEach((musicBtn) => {
-    musicBtn?.addEventListener("click", () => {
+    musicBtn?.addEventListener('click', () => {
       if (audioElement.paused) {
         try {
           audioElement.play()
-          noteSvg?.classList.toggle("hidden")
-          blockSvg?.classList.toggle("hidden")
+          noteSvg?.classList.toggle('hidden')
+          blockSvg?.classList.toggle('hidden')
         } catch {
           alert("Can't play music right now! Sorry.")
         }
       } else {
         audioElement.pause()
-        noteSvg?.classList.toggle("hidden")
-        blockSvg?.classList.toggle("hidden")
+        noteSvg?.classList.toggle('hidden')
+        blockSvg?.classList.toggle('hidden')
       }
     })
   })
@@ -202,19 +209,19 @@
   function toogleNav() {
     const height = navContent?.scrollHeight
     navOpen = !navOpen
-    navOpenSvg?.classList.toggle("hidden")
-    navCloseSvg?.classList.toggle("hidden")
+    navOpenSvg?.classList.toggle('hidden')
+    navCloseSvg?.classList.toggle('hidden')
     if (navOpen) {
       gsap.to(navContent, { height, duration: 0.2 })
-      if (!navElement?.classList.contains("translucent_nav"))
-        navElement?.classList.add("translucent_nav")
+      if (!navElement?.classList.contains('translucent_nav'))
+        navElement?.classList.add('translucent_nav')
     } else {
       gsap.to(navContent, { height: 0, duration: 0.2 })
       if (
         window.scrollY <= 100 &&
-        navElement?.classList.contains("translucent_nav")
+        navElement?.classList.contains('translucent_nav')
       )
-        navElement?.classList.remove("translucent_nav")
+        navElement?.classList.remove('translucent_nav')
     }
   }
 </script>

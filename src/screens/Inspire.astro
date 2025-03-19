@@ -1,15 +1,15 @@
 ---
-import { Image } from "astro:assets"
-import Slider1 from "../assets/slider_1.webp"
-import Slider2 from "../assets/slider_2.webp"
-import Slider3 from "../assets/slider_3.webp"
-import Slider4 from "../assets/slider_4.webp"
-import Slider5 from "../assets/slider_5.webp"
-import Reason1 from "../assets/reason_1.webp"
-import Reason2 from "../assets/reason_2.webp"
-import Reason3 from "../assets/reason_3.webp"
-import Reason4 from "../assets/reason_4.webp"
-import Reason5 from "../assets/reason_5.webp"
+import Slider1 from '../assets/slider_1.webp'
+import Slider2 from '../assets/slider_2.webp'
+import Slider3 from '../assets/slider_3.webp'
+import Slider4 from '../assets/slider_4.webp'
+import Slider5 from '../assets/slider_5.webp'
+import Reason1 from '../assets/reason_1.webp'
+import Reason2 from '../assets/reason_2.webp'
+import Reason3 from '../assets/reason_3.webp'
+import Reason4 from '../assets/reason_4.webp'
+import Reason5 from '../assets/reason_5.webp'
+import { Image } from 'astro:assets'
 const currentSliders = [
   { image: Slider1 },
   { image: Slider2 },
@@ -91,12 +91,12 @@ const reasonImages = [Reason1, Reason2, Reason3, Reason4, Reason5]
             <Image
               src={image.image}
               alt=""
-              class={`${index === 2 ? "xl:w-44 w-28" : "xl:w-72 w-48"} ${
+              class={`${index === 2 ? 'xl:w-44 w-28' : 'xl:w-72 w-48'} ${
                 index === 0
-                  ? "aspect-[7.5/16]"
+                  ? 'aspect-[7.5/16]'
                   : index === 1
-                  ? "aspect-[9/16]"
-                  : "aspect-[7/16]"
+                    ? 'aspect-[9/16]'
+                    : 'aspect-[7/16]'
               } object-cover h-auto origin-left slider-images`}
             />
           </div>
@@ -126,11 +126,11 @@ const reasonImages = [Reason1, Reason2, Reason3, Reason4, Reason5]
         reasonImages.map((image, index) => (
           <div
             class={`${
-              index === 0 ? "" : "hidden"
+              index === 0 ? '' : 'hidden'
             } overflow-hidden reason-image`}
           >
-            <Image
-              src={image}
+            <img
+              src={image.src}
               alt="A place in japan"
               class="w-[40rem] object-cover aspect-[1.1/1] rounded-md"
             />
@@ -148,7 +148,7 @@ const reasonImages = [Reason1, Reason2, Reason3, Reason4, Reason5]
               class="absolute -left-9 h-full w-1 bg-black left-bar"
             >
             </div>
-             Festivals</button
+            Festivals</button
           >
           <p class="max-w-md lg:text-lg overflow-hidden collapsible-content">
             Japan is renowned for its enchanting festivals, where ancient
@@ -162,7 +162,7 @@ const reasonImages = [Reason1, Reason2, Reason3, Reason4, Reason5]
           <button class={`font-medium relative text-2xl collapsible-trigger`}>
             <div class="absolute -left-9 h-full w-1 bg-black hidden left-bar">
             </div>
-             Art and Artists
+            Art and Artists
           </button>
           <p class="max-w-md lg:text-lg overflow-hidden collapsible-content">
             Japan's manga and anime industry has left an indelible mark on
@@ -176,7 +176,7 @@ const reasonImages = [Reason1, Reason2, Reason3, Reason4, Reason5]
           <button class={`font-medium relative text-2xl collapsible-trigger`}>
             <div class="absolute -left-9 h-full w-1 bg-black hidden left-bar">
             </div>
-             The Culture</button
+            The Culture</button
           >
           <p class="max-w-md lg:text-lg overflow-hidden collapsible-content">
             Japanese culture is a rich tapestry that seamlessly weaves together
@@ -191,7 +191,7 @@ const reasonImages = [Reason1, Reason2, Reason3, Reason4, Reason5]
           <button class={`font-medium relative text-2xl collapsible-trigger`}>
             <div class="absolute -left-9 h-full w-1 bg-black hidden left-bar">
             </div>
-             Peace and Quiet
+            Peace and Quiet
           </button>
           <p class="max-w-md lg:text-lg overflow-hidden collapsible-content">
             Japan's landscapes are a harmonious blend of breathtaking natural
@@ -205,7 +205,7 @@ const reasonImages = [Reason1, Reason2, Reason3, Reason4, Reason5]
           <button class={`font-medium relative text-2xl collapsible-trigger`}>
             <div class="absolute -left-9 h-full w-1 bg-black hidden left-bar">
             </div>
-             Ease of Travel</button
+            Ease of Travel</button
           >
           <p class="max-w-md lg:text-lg overflow-hidden collapsible-content">
             Traveling in Japan is a remarkably easy and efficient experience,
@@ -221,20 +221,20 @@ const reasonImages = [Reason1, Reason2, Reason3, Reason4, Reason5]
 </section>
 
 <script>
-  import gsap from "gsap"
-  import Flip from "gsap/Flip"
-  import CustomEase from "gsap/CustomEase"
-  import Slider1 from "../assets/slider_1.webp"
-  import Slider2 from "../assets/slider_2.webp"
-  import Slider3 from "../assets/slider_3.webp"
-  import Slider4 from "../assets/slider_4.webp"
-  import Slider5 from "../assets/slider_5.webp"
+  import gsap from 'gsap'
+  import Flip from 'gsap/Flip'
+  import CustomEase from 'gsap/CustomEase'
+  import Slider1 from '../assets/slider_1.webp'
+  import Slider2 from '../assets/slider_2.webp'
+  import Slider3 from '../assets/slider_3.webp'
+  import Slider4 from '../assets/slider_4.webp'
+  import Slider5 from '../assets/slider_5.webp'
   const hiddenMask =
-    "linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 0%)"
+    'linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 0%)'
   const visibleMask =
-    "linear-gradient(to right, rgba(0,0,0,1) 100%, rgba(0,0,0,0) 0%)"
+    'linear-gradient(to right, rgba(0,0,0,1) 100%, rgba(0,0,0,0) 0%)'
   const exitMask =
-    "linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 0%)"
+    'linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 0%)'
   const sliderImages = [
     Slider1.src,
     Slider2.src,
@@ -244,30 +244,30 @@ const reasonImages = [Reason1, Reason2, Reason3, Reason4, Reason5]
   ]
   let sliderIndex = [4, 0, 1, 2, 3]
   let reasonIndex = 0
-  const prevBtn = document.getElementById("prev-btn")
-  const nextBtn = document.getElementById("next-btn")
+  const prevBtn = document.getElementById('prev-btn')
+  const nextBtn = document.getElementById('next-btn')
   const sliderImagesElement =
-    document.querySelectorAll<HTMLImageElement>(".slider-images")
-  const sliderBox = document.querySelectorAll<HTMLDivElement>(".slider-box")
+    document.querySelectorAll<HTMLImageElement>('.slider-images')
+  const sliderBox = document.querySelectorAll<HTMLDivElement>('.slider-box')
   const reasonImagesElement =
-    document.querySelectorAll<HTMLDivElement>(".reason-image")
+    document.querySelectorAll<HTMLDivElement>('.reason-image')
   const collapsibleParas = document.querySelectorAll<HTMLParagraphElement>(
-    ".collapsible-content",
+    '.collapsible-content',
   )
-  const collapsibleBtns = document.querySelectorAll(".collapsible-trigger")
+  const collapsibleBtns = document.querySelectorAll('.collapsible-trigger')
   const collapsibleIndicators =
-    document.querySelectorAll<HTMLSpanElement>(".left-bar")
-  nextBtn?.addEventListener("click", () => {
+    document.querySelectorAll<HTMLSpanElement>('.left-bar')
+  nextBtn?.addEventListener('click', () => {
     sliderIndex = decrementIndex(sliderIndex)
-    updateImages("prev")
+    updateImages('prev')
   })
-  prevBtn?.addEventListener("click", () => {
+  prevBtn?.addEventListener('click', () => {
     sliderIndex = incrementIndex(sliderIndex)
-    updateImages("next")
+    updateImages('next')
   })
 
-  function updateImages(func: "next" | "prev") {
-    const state = Flip.getState(".slider-box")
+  function updateImages(func: 'next' | 'prev') {
+    const state = Flip.getState('.slider-box')
     sliderImagesElement.forEach((image, index) => {
       image.src = sliderImages[sliderIndex[index]]
     })
@@ -275,7 +275,7 @@ const reasonImages = [Reason1, Reason2, Reason3, Reason4, Reason5]
       box.dataset.flipId = sliderIndex[index].toString()
     })
     Flip.from(state, {
-      targets: func === "next" ? ".next-animate-box" : ".prev-animate-box",
+      targets: func === 'next' ? '.next-animate-box' : '.prev-animate-box',
       duration: 0.5,
       scale: true,
     })
@@ -283,19 +283,19 @@ const reasonImages = [Reason1, Reason2, Reason3, Reason4, Reason5]
 
   let isAnimating = false
   collapsibleBtns.forEach((btn, index) => {
-    btn.addEventListener("click", () => {
+    btn.addEventListener('click', () => {
       const prevIndex = reasonIndex
       reasonIndex = index
       if (prevIndex === reasonIndex || isAnimating) return
       isAnimating = true
-      const state = Flip.getState(".left-bar")
-      collapsibleIndicators[prevIndex].classList.add("hidden")
-      collapsibleIndicators[reasonIndex].classList.remove("hidden")
-      collapsibleIndicators[prevIndex].removeAttribute("data-flip-id")
-      collapsibleIndicators[reasonIndex].dataset.flipId = "bar"
-      reasonImagesElement[prevIndex].classList.add("absolute", "top-0")
-      reasonImagesElement[reasonIndex].classList.remove("absolute", "top-0")
-      reasonImagesElement[reasonIndex].classList.remove("hidden")
+      const state = Flip.getState('.left-bar')
+      collapsibleIndicators[prevIndex].classList.add('hidden')
+      collapsibleIndicators[reasonIndex].classList.remove('hidden')
+      collapsibleIndicators[prevIndex].removeAttribute('data-flip-id')
+      collapsibleIndicators[reasonIndex].dataset.flipId = 'bar'
+      reasonImagesElement[prevIndex].classList.add('absolute', 'top-0')
+      reasonImagesElement[reasonIndex].classList.remove('absolute', 'top-0')
+      reasonImagesElement[reasonIndex].classList.remove('hidden')
       Flip.from(state, {
         absolute: true,
       })
@@ -314,17 +314,17 @@ const reasonImages = [Reason1, Reason2, Reason3, Reason4, Reason5]
         {
           maskImage: visibleMask,
           duration: 1,
-          ease: CustomEase.create("custom", "0.76,0,0.24,1"),
+          ease: CustomEase.create('custom', '0.76,0,0.24,1'),
         },
       )
       gsap
         .to(reasonImagesElement[prevIndex], {
           maskImage: exitMask,
           duration: 1,
-          ease: CustomEase.create("custom", "0.76,0,0.24,1"),
+          ease: CustomEase.create('custom', '0.76,0,0.24,1'),
         })
         .then(() => {
-          reasonImagesElement[prevIndex].classList.add("hidden")
+          reasonImagesElement[prevIndex].classList.add('hidden')
           isAnimating = false
         })
     })
@@ -339,7 +339,7 @@ const reasonImages = [Reason1, Reason2, Reason3, Reason4, Reason5]
         maskImage: visibleMask,
         duration: 1,
         delay: index * 0.25,
-        ease: CustomEase.create("custom", "0.76,0,0.24,1"),
+        ease: CustomEase.create('custom', '0.76,0,0.24,1'),
       },
     )
   })
@@ -352,13 +352,13 @@ const reasonImages = [Reason1, Reason2, Reason3, Reason4, Reason5]
         scrollTrigger: image,
         maskImage: visibleMask,
         duration: 1,
-        ease: CustomEase.create("custom", "0.76,0,0.24,1"),
+        ease: CustomEase.create('custom', '0.76,0,0.24,1'),
       },
     )
   })
 
   collapsibleParas.forEach((para, index) => {
-    index !== 0 ? (para.style.height = "0px") : null
+    index !== 0 ? (para.style.height = '0px') : null
   })
 
   function incrementIndex(arr: number[]) {

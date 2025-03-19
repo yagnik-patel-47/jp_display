@@ -1,12 +1,10 @@
 ---
-import { Image } from "astro:assets"
-import HeroImg from "../assets/hero.webp"
-const h1text = "Experience the"
-const h2text = "Magic of Japan"
+import { Image } from 'astro:assets'
+import HeroImg from '../assets/hero.webp'
 ---
 
 <main
-  class="flex min-h-screen text-white flex-col px-8 md:px-24 lg:px-32 xl:px-40 relative pb-16"
+  class="flex min-h-svh text-white flex-col px-8 md:px-24 lg:px-32 xl:px-40 relative pb-16"
 >
   <Image
     src={HeroImg}
@@ -17,9 +15,7 @@ const h2text = "Magic of Japan"
     class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/20"
   >
   </div>
-  <div class="flex flex-col justify-between h-full z-10 flex-1">
-    <span></span>
-    <span></span>
+  <div class="flex flex-col justify-end h-full z-10 flex-1">
     <div class="flex flex-col space-y-8">
       <p
         class="py-2 px-4 font-japanese font-medium text-sm md:text-base rounded-full bg-white/30 text-white w-fit"
@@ -27,14 +23,14 @@ const h2text = "Magic of Japan"
         自然と文化がひとつになる場所
       </p>
       <h1
-        class="font-decorative text-[8vw] leading-none md:leading-normal sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold"
+        class="font-decorative text-[8vw] sm:text-4xl md:text-6xl lg:text-7xl 2xl:text-8xl font-bold max-sm:leading-6"
       >
-        {h1text}
+        Experience the
       </h1>
       <h1
-        class="font-decorative text-[10vw] leading-none md:leading-normal sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-[#c0e472]"
+        class="font-decorative text-[10vw] sm:text-5xl md:text-7xl lg:text-8xl 2xl:text-9xl font-bold text-[#c0e472] max-sm:leading-6"
       >
-        {h2text}
+        Magic of Japan
       </h1>
       <button
         class="w-fit group items-center space-x-3 flex py-3 px-8 lg:py-4 lg:px-12 rounded-full bg-white text-neutral-900 lg:text-lg"
@@ -49,7 +45,7 @@ const h2text = "Magic of Japan"
               )
             }
           }} -->
-        <span>Get Immersive</span>{" "}
+        <span>Get Immersive</span>{' '}
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -65,7 +61,7 @@ const h2text = "Magic of Japan"
         </svg>
       </button>
     </div>
-    <div class="flex justify-between items-end w-full">
+    <div class="flex justify-between items-end w-full mt-20 lg:mt-10">
       <div
         class="flex flex-col lg:flex-row space-y-2 lg:space-y-0 lg:space-x-12 lg:items-center"
       >
@@ -190,8 +186,8 @@ const h2text = "Magic of Japan"
 </main>
 
 <script>
-  const fullscreenBtn = document.getElementById("fullscreen-btn")
-  fullscreenBtn?.addEventListener("click", () => {
+  const fullscreenBtn = document.getElementById('fullscreen-btn')
+  fullscreenBtn?.addEventListener('click', () => {
     try {
       document.documentElement.requestFullscreen()
     } catch {

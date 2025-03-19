@@ -1,12 +1,12 @@
 ---
-import About1 from "../assets/about_1.webp"
-import About2 from "../assets/about_2.webp"
-import About3 from "../assets/about_3.webp"
-import About4 from "../assets/about_4.webp"
-import About5 from "../assets/about_5.webp"
-import { Image } from "astro:assets"
+import About1 from '../assets/about_1.webp'
+import About2 from '../assets/about_2.webp'
+import About3 from '../assets/about_3.webp'
+import About4 from '../assets/about_4.webp'
+import About5 from '../assets/about_5.webp'
+import { Image } from 'astro:assets'
 const images = [About1, About2, About3, About4, About5]
-const letters = ["J", "A", "P", "A", "N"]
+const letters = ['J', 'A', 'P', 'A', 'N']
 ---
 
 <section
@@ -43,57 +43,59 @@ const letters = ["J", "A", "P", "A", "N"]
 </section>
 
 <script>
-  import gsap from "gsap"
-  import CustomEase from "gsap/CustomEase"
-  const isMobile = window.matchMedia("(max-width: 762px)").matches
-  const images = document.querySelectorAll<HTMLDivElement>(".about-images")
-  const letters = document.querySelectorAll<HTMLSpanElement>(".about-letters")
-  const overlays = document.querySelectorAll<HTMLDivElement>(".image-overlays")
-  images.forEach((image, index) => {
-    gsap.to(image, {
-      scrollTrigger: image,
-      y: !isMobile
+  import gsap from 'gsap'
+  // import ScrollTrigger from 'gsap/ScrollTrigger'
+  // gsap.registerPlugin(ScrollTrigger)
+  // import CustomEase from "gsap/CustomEase"
+  const isMobile = window.matchMedia('(max-width: 762px)').matches
+
+  gsap.to('.about-images', {
+    scrollTrigger: {
+      trigger: '.about-images',
+    },
+    y: function (index) {
+      return !isMobile
         ? index === 3 || index === 1
           ? 48
           : index === 2
-          ? 96
-          : 0
+            ? 96
+            : 0
         : index === 3 || index === 1
-        ? 32
-        : index === 2
-        ? 64
-        : 0,
-      duration: 1,
-      delay: index === 3 || index === 1 ? 0.5 : index === 2 ? 0.25 : 0,
-      ease: CustomEase.create("custom", "0.76,0,0.24,1"),
-    })
+          ? 32
+          : index === 2
+            ? 64
+            : 0
+    },
+    duration: 1,
+    delay: function (index) {
+      return index === 3 || index === 1 ? 0.5 : index === 2 ? 0.25 : 0
+    },
+    // ease: CustomEase.create("custom", "0.76,0,0.24,1"),
   })
-  letters.forEach((letter, index) => {
-    gsap.fromTo(
-      letter,
-      {
-        opacity: 0,
+  gsap.fromTo(
+    '.about-letters',
+    {
+      opacity: 0,
+    },
+    {
+      scrollTrigger: '.about-letters',
+      opacity: 1,
+      duration: 0.5,
+      delay: function (index) {
+        return 0.75 + index * 0.25
       },
-      {
-        scrollTrigger: letter,
-        opacity: 1,
-        duration: 0.5,
-        delay: 0.75 + index * 0.25,
-      },
-    )
-  })
-  overlays.forEach((overlay, index) => {
-    gsap.fromTo(
-      overlay,
-      {
-        opacity: 0,
-      },
-      {
-        scrollTrigger: overlay,
-        opacity: 1,
-        duration: 0.5,
-        delay: 0.5,
-      },
-    )
-  })
+    },
+  )
+  gsap.fromTo(
+    '.image-overlays',
+    {
+      opacity: 0,
+    },
+    {
+      scrollTrigger: '.image-overlays',
+      opacity: 1,
+      duration: 0.5,
+      delay: 0.5,
+    },
+  )
 </script>

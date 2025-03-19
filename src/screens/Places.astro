@@ -1,6 +1,6 @@
 ---
-import placeData from "../lib/place-data"
-import { Image } from "astro:assets"
+import placeData from '../lib/place-data'
+import { Image } from 'astro:assets'
 ---
 
 <section
@@ -11,11 +11,11 @@ import { Image } from "astro:assets"
     placeData.map(({ title, images, jTitle, description }) => (
       <div class="lg:min-h-screen py-52 relative flex justify-center items-center place">
         <div class="flex flex-col space-y-4 items-center fade-in">
-          <h1 class="lg:text-7xl text-4xl font-bold font-decorative">
+          <h1 class="lg:text-5xl 2xl:text-7xl text-4xl font-bold font-decorative">
             {title}
           </h1>
           <h2 class="font-japanese font-medium text-2xl">{jTitle}</h2>
-          <p class="lg:text-lg max-w-xl text-center text-neutral-200">
+          <p class="lg:text-lg max-w-full lg:max-w-1/3 text-center text-neutral-200">
             {description}
           </p>
         </div>
@@ -39,12 +39,12 @@ import { Image } from "astro:assets"
 </section>
 
 <script>
-  import gsap from "gsap"
-  const isMobile = window.matchMedia("(max-width: 762px)").matches
-  const places = document.querySelectorAll<HTMLDivElement>(".place")
+  import gsap from 'gsap'
+  const isMobile = window.matchMedia('(max-width: 762px)').matches
+  const places = document.querySelectorAll<HTMLDivElement>('.place')
   const images = [...places]
     .map((place) => {
-      return [...place.querySelectorAll("img")].map((item, pos) => ({
+      return [...place.querySelectorAll('img')].map((item, pos) => ({
         element: item,
         column: pos,
         wrapper: place,
@@ -54,11 +54,11 @@ import { Image } from "astro:assets"
   images.forEach((image) => {
     console.log()
     gsap.to(image.element, {
-      ease: "none",
+      ease: 'none',
       scrollTrigger: {
         trigger: image.wrapper,
-        start: isMobile ? "top 50%" : "top bottom",
-        end: isMobile ? "top top" : "80% 100%",
+        start: isMobile ? 'top 50%' : 'top bottom',
+        end: isMobile ? 'top top' : '80% 100%',
         scrub: 0.7,
       },
       rotation: image.column === 0 ? -3 : 3,
@@ -71,11 +71,11 @@ import { Image } from "astro:assets"
         opacity: 0,
       },
       {
-        ease: "none",
+        ease: 'none',
         scrollTrigger: {
           trigger: image.wrapper,
-          start: isMobile ? "top 50%" : "top bottom",
-          end: isMobile ? "top top" : "80% 100%",
+          start: isMobile ? 'top 50%' : 'top bottom',
+          end: isMobile ? 'top top' : '80% 100%',
           scrub: 0.7,
         },
         scale: 1,

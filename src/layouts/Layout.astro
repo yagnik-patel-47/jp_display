@@ -4,9 +4,24 @@ interface Props {
 }
 
 const { title } = Astro.props
-import "@fontsource-variable/rubik"
-import "@fontsource-variable/cinzel"
-import "@fontsource/noto-serif-jp/500.css"
+import '@fontsource-variable/rubik'
+import '@fontsource-variable/cinzel'
+import '@fontsource-variable/noto-serif-jp'
+import '../global.css'
+
+import Reason1Image from '../assets/reason_1.webp'
+import Reason2Image from '../assets/reason_2.webp'
+import Reason3Image from '../assets/reason_3.webp'
+import Reason4Image from '../assets/reason_4.webp'
+import Reason5Image from '../assets/reason_5.webp'
+
+const images = [
+  Reason1Image,
+  Reason2Image,
+  Reason3Image,
+  Reason4Image,
+  Reason5Image,
+]
 ---
 
 <!doctype html>
@@ -18,6 +33,11 @@ import "@fontsource/noto-serif-jp/500.css"
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    {
+      images.map((image) => (
+        <link rel="preload" href={image.src} as="image" type="image/webp" />
+      ))
+    }
   </head>
   <body class="font-rubik">
     <slot />
@@ -76,11 +96,3 @@ import "@fontsource/noto-serif-jp/500.css"
     padding-bottom: 2.5rem;
   }
 </style>
-
-<script>
-  import gsap from "gsap"
-  import Flip from "gsap/Flip"
-  import ScrollTrigger from "gsap/ScrollTrigger"
-  import CustomEase from "gsap/CustomEase"
-  gsap.registerPlugin(ScrollTrigger, Flip, CustomEase)
-</script>
